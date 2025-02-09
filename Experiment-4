@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ListOperations {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> list = new ArrayList<>();
+
+        while (true) {
+            // Display menu
+            System.out.println("\n1. Insert");
+            System.out.println("2. Search");
+            System.out.println("3. Delete");
+            System.out.println("4. Display");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1: // Insert
+                    System.out.print("Enter the item to be inserted: ");
+                    String item = scanner.nextLine();
+                    list.add(item);
+                    System.out.println("Inserted successfully.");
+                    break;
+
+                case 2: // Search
+                    System.out.print("Enter the item to search: ");
+                    String searchItem = scanner.nextLine();
+                    if (list.contains(searchItem)) {
+                        System.out.println(searchItem + " found in the list.");
+                    } else {
+                        System.out.println(searchItem + " not found.");
+                    }
+                    break;
+
+                case 3: // Delete
+                    System.out.print("Enter the item to delete: ");
+                    String deleteItem = scanner.nextLine();
+                    if (list.remove(deleteItem)) {
+                        System.out.println(deleteItem + " deleted successfully.");
+                    } else {
+                        System.out.println(deleteItem + " not found.");
+                    }
+                    break;
+
+                case 4: // Display
+                    if (list.isEmpty()) {
+                        System.out.println("List is empty.");
+                    } else {
+                        System.out.println("List contents: " + list);
+                    }
+                    break;
+
+                case 5: // Exit
+                    System.out.println("Exiting program...");
+                    scanner.close();
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice! Please enter a number between 1 and 5.");
+            }
+        }
+    }
+}
